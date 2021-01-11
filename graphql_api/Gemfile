@@ -7,16 +7,16 @@ gem 'rails', '~> 6.1.1'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
-gem 'graphql', '1.9.17'
+gem 'graphql'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'graphiql-rails'
 end
 
 group :development do
   gem 'listen', '~> 3.3'
   gem 'spring'
-  gem 'graphiql-rails', '1.7.0', group: :development
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
