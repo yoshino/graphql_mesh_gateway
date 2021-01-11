@@ -9,13 +9,22 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql-data:/var/lib/mysql
-  web:
+  graphql_api:
     build: ./graphql_api
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - "./graphql_api:/graphql_api"
     ports:
       - "3000:3000"
+    depends_on:
+      - db
+  rest_api:
+    build: ./rest_api
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3001 -b '0.0.0.0'"
+    volumes:
+      - "./rest_api:/rest_api"
+    ports:
+      - "3001:3001"
     depends_on:
       - db
 volumes:
