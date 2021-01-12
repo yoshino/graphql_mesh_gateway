@@ -1,0 +1,155 @@
+openapi: 3.0.0
+info:
+  version: '1.0'
+  title: Sample API
+  description: A short description of API.
+  termsOfService: 'http://example.com/terms/'
+  contact:
+    name: API support
+    url: 'http://www.example.com/support'
+    email: support@example.com
+servers:
+  - url: 'http://localhost:3001/api/v1'
+paths:
+  '/users/{userId}':
+    parameters:
+      - schema:
+          type: integer
+        name: userId
+        in: path
+        required: true
+        description: Id of an existing user.
+    get:
+      summary: Get User Info by User ID
+      responses:
+        '200':
+          description: User Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+        '404':
+          description: User Not Found
+      operationId: get-users-userId
+      description: Retrieve the information of the user with the matching user ID.
+      tags:
+        - users
+    patch:
+      summary: Update User Information
+      operationId: patch-users-userId
+      responses:
+        '200':
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      description: Update the infromation of an existing user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+        description: Patch user properties to update.
+      tags:
+        - users
+    delete:
+      summary: Delete User
+      operationId: delete-users-userId
+      responses:
+        '200':
+          description: User Deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags:
+        - users
+      description: Delete the infromation of an existing user.
+  /users:
+    post:
+      summary: Create New User
+      operationId: post-user
+      responses:
+        '200':
+          description: User Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Missing Required Information
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                address:
+                  type: string
+              required:
+                - name
+                - address
+        description: Post the necessary fields for the API to create a new user.
+      description: Create a new user.
+      tags:
+        - users
+    get:
+      tags:
+        - users
+      summary: Get all users.
+      operationId: get-users
+      description: Returns an array of User model
+      parameters: []
+      responses:
+        '200':
+          description: A JSON array of User model
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      title: User
+      type: object
+      description: ''
+      x-examples:
+        Alice Smith:
+          id: 142
+          name: Alice Amith
+          address: Tokyo Japan
+          created_at: '2014-10-10T13:50:40+09:00'
+          updated_at: '2014-11-10T13:50:40+09:00'
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the given user.
+        name:
+          type: string
+        address:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - address
+  securitySchemes: {}
+tags:
+  - name: users
