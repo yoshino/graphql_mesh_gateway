@@ -1,0 +1,13 @@
+{
+  "name": "api_gateway",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@graphql-mesh/cli": "^0.15.6",
+    "@graphql-mesh/graphql": "^0.12.1",
+    "@graphql-mesh/openapi": "^0.11.6",
+    "@graphql-mesh/runtime": "^0.10.12",
+    "graphql": "^15.4.0"
+  }
+}
