@@ -22,6 +22,7 @@ module Api
 
       def destroy
         user = User.find(params[:id])
+        user.destroy!
         render json: user
       end
 
