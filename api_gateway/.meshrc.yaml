@@ -2,7 +2,7 @@ sources:
   - name: rest
     handler:
       openapi:
-        source: open_api.yaml
+        source: https://raw.githubusercontent.com/yoshino/graphql_mesh_gateway/main/rest_api/open_api.yaml
   - name: graphql
     handler:
       graphql:
