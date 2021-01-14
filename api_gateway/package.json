@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "yarn graphql-mesh serve"
+  },
   "dependencies": {
     "@graphql-mesh/cli": "^0.15.6",
     "@graphql-mesh/graphql": "^0.12.1",

@@ -2,8 +2,8 @@ sources:
   - name: rest
     handler:
       openapi:
-        source: ../rest_api/open_api.yaml
+        source: open_api.yaml
   - name: graphql
     handler:
       graphql:
-        endpoint: http://localhost:3000/graphql
+        endpoint: http://172.16.238.4:3000/graphql
