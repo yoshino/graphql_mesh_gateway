@@ -14,7 +14,6 @@ services:
         ipv4_address: 172.16.238.2
   api_gateway:
     build: ./api_gateway
-    command: bash -c "yarn graphql-mesh serve"
     ports:
       - "4000:4000"
     depends_on:
@@ -23,6 +22,7 @@ services:
     networks:
       app_net:
         ipv4_address: 172.16.238.3
+    entrypoint: /api_gateway/start.sh
   graphql_api:
     build: ./graphql_api
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"

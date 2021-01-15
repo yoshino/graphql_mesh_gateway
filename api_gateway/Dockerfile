@@ -6,6 +6,7 @@ RUN mkdir -p $NODE_ROOT
 ADD package.json $NODE_ROOT
 ADD yarn.lock $NODE_ROOT
 ADD .meshrc.yaml $NODE_ROOT
+ADD start.sh $NODE_ROOT
 
 RUN yarn install
 
